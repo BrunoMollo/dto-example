@@ -1,6 +1,11 @@
 import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import type { SweetBreadTier, SweetBreadType } from "../domain/sweetBread";
 
-export const usersTable = sqliteTable("sweet_bread", {
+export const sweetBreadTable = sqliteTable("sweet_bread", {
   id: int().primaryKey({ autoIncrement: true }),
-  name: text({ length: 20 }).notNull(),
+  name: text().notNull(),
+  type: text({ length: 1 }).notNull().$type<SweetBreadType>(),
+  weight_in_grams: int().notNull(),
+  brand: text().notNull(),
+  tier: text({ length: 1 }).notNull().$type<SweetBreadTier>(),
 });
