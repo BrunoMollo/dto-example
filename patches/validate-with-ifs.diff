@@ -1,0 +1,53 @@
+diff --git a/routes/api.ts b/routes/api.ts
+index 89cee31..b36b738 100644
+--- a/routes/api.ts
++++ b/routes/api.ts
+@@ -60,6 +60,48 @@ export function apiRoutes(
+      *       - Pan Dulces
+      */
+     .post(async (req, res) => {
++      if (!(req.body instanceof Object)) {
++        return res.status(400).send({ error: "invalid request body" });
++      }
++      if (!req.body.name) {
++        return res.status(400).send({ error: "name is required" });
++      }
++      if (typeof req.body.name !== "string") {
++        return res.status(400).send({ error: "name must be a string" });
++      }
++      if (req.body.name.length < 3 || req.body.name.length > 20) {
++      }
++      if (!req.body.type) {
++        return res.status(400).send({ error: "type is required" });
++      }
++      if (
++        ["CANDIED_FRUIT", "CHOCOLATE_CHIPS", "PLAIN"].includes(req.body.type)
++      ) {
++        return res.status(400).send({
++          error:
++            "type must be one of the following values: CANDIED_FRUIT, CHOCOLATE_CHIPS, PLAIN",
++        });
++      }
++      if (typeof req.body.weight_in_grams === "number") {
++        return res
++          .status(400)
++          .send({ error: "weight_in_grams must be a number" });
++      }
++      if (req.body.weight_in_grams < 100 || req.body.weight_in_grams > 1000) {
++        return res
++          .status(400)
++          .send({ error: "weight_in_grams must be between 100 and 1000" });
++      }
++      if (typeof req.body.brand !== "string") {
++        return res.status(400).send({ error: "brand must be a string" });
++      }
++      if (["LOW_COST", "STANDARD", "PREMIUM"].includes(req.body.tier)) {
++        return res.status(400).send({
++          error:
++            "tier must be one of the following values: LOW_COST, STANDARD, PREMIUM",
++        });
++      }
++
+       console.log(req.body);
+ 
+       console.log("createing sweet bread");
