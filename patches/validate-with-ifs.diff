@@ -1,7 +1,7 @@
-diff --git a/routes/api.ts b/routes/api.ts
+diff --git a/src/routes/api.ts b/src/routes/api.ts
 index 89cee31..b36b738 100644
---- a/routes/api.ts
-+++ b/routes/api.ts
+--- a/src/routes/api.ts
++++ b/src/routes/api.ts
 @@ -60,6 +60,48 @@ export function apiRoutes(
       *       - Pan Dulces
       */

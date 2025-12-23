@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-configureSwagger(app, { port, apis: ["./routes/api.ts"] });
+configureSwagger(app, { port });
 
 const sweatBreadService = new SweetBreadService(db);
 
