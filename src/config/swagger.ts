@@ -2,10 +2,7 @@ import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 import type { Express } from "express";
 
-export function configureSwagger(
-  app: Express,
-  { port, apis }: { port: number; apis: string[] },
-) {
+export function configureSwagger(app: Express, { port }: { port: number }) {
   // Definición de metadatos de la API
   const swaggerOptions: swaggerJsdoc.Options = {
     definition: {
@@ -21,7 +18,7 @@ export function configureSwagger(
         },
       ],
     },
-    apis,
+    apis: ["./src/routes/api.ts"],
   };
 
   const swaggerDocs = swaggerJsdoc(swaggerOptions);
