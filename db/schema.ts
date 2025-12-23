@@ -8,4 +8,5 @@ export const sweetBreadTable = sqliteTable("sweet_bread", {
   weight_in_grams: int().notNull(),
   brand: text().notNull(),
   tier: text({ length: 1 }).notNull().$type<SweetBreadTier>(),
+  secret_ingredient: text(),
 });
