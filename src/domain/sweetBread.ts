@@ -8,4 +8,5 @@ export interface SweetBread {
   weight_in_grams: number;
   brand: string;
   tier: SweetBreadTier;
+  secret_ingredient: string | null;
 }
